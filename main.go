@@ -4,8 +4,8 @@ import (
 	"fmt"
 
 	"github.com/gowok/gowok"
-	"github.com/hadihammurabi/belajar-go-rest-api/api"
 	"github.com/hadihammurabi/belajar-go-rest-api/driver"
+	"github.com/hadihammurabi/belajar-go-rest-api/web"
 )
 
 func init() {
@@ -13,7 +13,7 @@ func init() {
 }
 
 func main() {
-	api.Run()
+	web.Run()
 
 	gowok.GracefulStop(func() {
 		fmt.Println()

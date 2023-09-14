@@ -1,31 +1,52 @@
-package api
+package web
 
 import (
 	"log"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gowok/gowok"
-	"github.com/hadihammurabi/belajar-go-rest-api/api/middleware"
 	"github.com/hadihammurabi/belajar-go-rest-api/driver"
+	"github.com/hadihammurabi/belajar-go-rest-api/web/middleware"
 )
 
-// Rest struct
-type Rest struct {
+func ConfigureRoute(api *Web) {
+	api.HTTP.Mount("", Index(api))
+	// api.HTTP.Mount("/auth", Auth(api).router)
+}
+
+var a *Web
+
+func Get() *Web {
+	if a != nil {
+		return a
+	}
+
+	a = NewAPIRest()
+	ConfigureRoute(a)
+	return a
+}
+
+func Run() {
+	go (Get()).Run()
+}
+
+// Web struct
+type Web struct {
 	HTTP        *fiber.App
 	Middlewares middleware.Middlewares
 }
 
-func NewAPIRest() *Rest {
+func NewAPIRest() *Web {
 	app := gowok.NewHTTP(&driver.Get().Config.App.Rest)
 
-	api := &Rest{
+	api := &Web{
 		HTTP:        app,
 		Middlewares: middleware.NewMiddleware(),
 	}
 	return api
 }
 
-func (d *Rest) Run() {
+func (d *Web) Run() {
 	restConf := driver.Get().Config.App.Rest
 	if !restConf.Enabled {
 		return
@@ -37,7 +58,7 @@ func (d *Rest) Run() {
 	}
 }
 
-func (d *Rest) Stop() {
+func (d *Web) Stop() {
 	d.HTTP.Shutdown()
 	log.Println("Server was stopped")
 }
