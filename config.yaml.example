@@ -1,0 +1,20 @@
+app:
+  rest:
+    enabled: true
+    host: :8080
+  grpc:
+    enabled: true
+    host: :8081
+  messaging:
+    enabled: true
+
+databases:
+  - driver: postgresql
+    dsn: 'host=localhost user=postgres password= database=postgres port=5432 sslmode=disable'
+  - driver: mongo
+    dsn: mongodb://root:root@localhost
+  - driver: redis
+
+messaging:
+  driver: rabbitmq
+  dsn: amqp://guest:guest@localhost:5672/
