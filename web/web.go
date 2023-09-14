@@ -1,9 +1,11 @@
 package web
 
 import (
+	"embed"
 	"log"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/template/html/v2"
 	"github.com/gowok/gowok"
 	"github.com/hadihammurabi/belajar-go-rest-api/driver"
 	"github.com/hadihammurabi/belajar-go-rest-api/web/middleware"
@@ -15,13 +17,14 @@ func ConfigureRoute(api *Web) {
 }
 
 var a *Web
+var viewsFS embed.FS
 
 func Get() *Web {
 	if a != nil {
 		return a
 	}
 
-	a = NewAPIRest()
+	a = NewWeb()
 	ConfigureRoute(a)
 	return a
 }
@@ -36,11 +39,16 @@ type Web struct {
 	Middlewares middleware.Middlewares
 }
 
-func NewAPIRest() *Web {
+func NewWeb() *Web {
 	app := gowok.NewHTTP(&driver.Get().Config.App.Rest)
 
+	appWithView := fiber.New(fiber.Config{
+		Views: html.New("./views", ".html"),
+	})
+	appWithView.Mount("", app)
+
 	api := &Web{
-		HTTP:        app,
+		HTTP:        appWithView,
 		Middlewares: middleware.NewMiddleware(),
 	}
 	return api
