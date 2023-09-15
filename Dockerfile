@@ -1,13 +1,21 @@
-FROM golang:1.15-alpine
+FROM golang:1.21-alpine AS builder
 
 WORKDIR /go/src/app
+COPY go.mod .
+COPY go.sum .
+
+RUN go mod download -x
+
 COPY . .
+RUN GOOS=linux GOARCH=amd64 go build -o main .
 
-RUN go get -d -v ./
-RUN go get -u github.com/swaggo/swag/cmd/swag && $GOPATH/bin/swag init
-RUN apk add make && make
+FROM alpine
+WORKDIR /usr/local/bin
 
-RUN apk add curl && (curl -L https://github.com/golang-migrate/migrate/releases/download/v4.14.1/migrate.linux-amd64.tar.gz | tar xvz)
+COPY --from=builder /go/src/app/views ./views
+COPY --from=builder /go/src/app/public ./public
+COPY --from=builder /go/src/app/main ./main
+RUN chmod +x main
 
 EXPOSE 8080
-CMD ["./main"]
+CMD ["main"]

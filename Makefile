@@ -2,7 +2,7 @@ all:
 	@make build
 
 build:
-	@go build .
+	@go build -o main .
 
 build-compose:
 	export CONTAINER_NAME=go_rest_api \
