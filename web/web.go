@@ -42,9 +42,15 @@ type Web struct {
 func NewWeb() *Web {
 	app := gowok.NewHTTP(&driver.Get().Config.App.Rest)
 
-	appWithView := fiber.New(fiber.Config{
-		Views: html.New("./views", ".html"),
+	views := html.New("./views", ".html")
+	views.AddFunc("public", func(p string) string {
+		return "/public/" + p
 	})
+	appWithView := fiber.New(fiber.Config{
+		Views:       views,
+		ViewsLayout: "layouts/empty",
+	})
+	appWithView.Static("public", "./public")
 	appWithView.Mount("", app)
 
 	api := &Web{

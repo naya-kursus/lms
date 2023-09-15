@@ -1,0 +1,221 @@
+<div class="row">
+  <div class="col-6 offset-3">
+
+    <form class="card" method="post" action="/register">
+      <div class="card-body">
+        <h1>Pendaftaran</h1>
+        <p>NAYA Coding School</p>
+
+        <p>
+          Informasi dapat dilihat di
+          <a href="https://nayatech.id/kursus.html" target="_blank">
+            https://nayatech.id/kursus.html
+          </a>
+
+          <br />
+
+          Atau WA ke
+          <a href="https://bit.ly/naya-wa" target="_blank">
+            https://bit.ly/naya-wa
+          </a>
+        </p>
+      </div>
+
+      <hr />
+
+      <div class="card-body">
+        <p>
+          Kamu mau gabung di kelas apa?
+          <br />
+          <span class="text-secondary">
+            Kalau masih bingung, kamu boleh banget konsultasi bareng tim NAYA
+            Kursus loh.
+          </span>
+        </p>
+        <div>
+          <input
+            type="radio"
+            name="program"
+            id="input-program_backend"
+            class="form-check-input"
+            value="Backend Go"
+            required
+          />
+          <label for="input-program_backend" class="form-check-label">
+            Backend Go
+          </label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            name="program"
+            id="input-program_frontend"
+            class="form-check-input"
+            value="Frontend Javascript"
+            required
+          />
+          <label for="input-program_frontend">Frontend Javascript</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            name="program"
+            id="input-program_nothing"
+            class="form-check-input"
+            value="masih bingung 😅"
+            required
+          />
+          <label for="input-program_nothing">masih bingung 😅</label>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <label for="input-fullname">
+          Yuk kenalan! Nama lengkap kamu siapa?
+        </label>
+        <div>
+          <input
+            type="text"
+            name="fullname"
+            id="input-fullname"
+            class="form-control"
+            placeholder="masukkan nama lengkap kamu ..."
+            required
+          />
+        </div>
+      </div>
+
+      <div class="card-body">
+        <label for="input-email">Alamat email kamu?</label>
+        <div>
+          <input
+            type="text"
+            name="email"
+            id="input-email"
+            class="form-control"
+            placeholder="masukkan email kamu ..."
+            required
+          />
+        </div>
+      </div>
+
+      <div class="card-body">
+        <label for="input-phone">Nomor Whatsapp kamu?</label>
+        <div>
+          <input
+            type="text"
+            name="phone"
+            id="input-phone"
+            class="form-control"
+            placeholder="masukkan nomor Whatsapp kamu ..."
+            required
+          />
+        </div>
+      </div>
+
+      <div class="card-body">
+        <label for="input-address">Kamu tinggal di mana sekarang?</label>
+        <div>
+          <textarea
+            name="address"
+            id="input-address"
+            class="form-control"
+            placeholder="masukkan alamat tinggal kamu ..."
+            rows="3"
+            required
+            ></textarea>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <label for="input-grade">Pendidikan kamu?</label>
+        <div>
+          <select name="grade" id="input-grade" class="form-select" required>
+            <option selected disabled>pilih pendidikan ...</option>
+            <option value="SMA">SMA</option>
+            <option value="D3">D3</option>
+            <option value="S1">S1</option>
+            <option value="S2">S2</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <label for="input-work_experience">
+          Ceritakan pengalaman kerjamu ya!
+        </label>
+        <div>
+          <textarea
+            name="work_experience"
+            id="input-work_experience"
+            class="form-control"
+            placeholder="tuliskan pengalaman kerja kamu ..."
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <label for="input-project_experience">
+          Ceritakan pengalaman project kamu juga dong!
+        </label>
+        <div>
+          <textarea
+            name="project_experience"
+            id="input-project_experience"
+            class="form-control"
+            placeholder="tuliskan pengalaman project kamu ..."
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <label for="input-learning_reason">
+          Kenapa kamu mau belajar programming?
+        </label>
+        <div>
+          <textarea
+            name="learning_reason"
+            id="input-learning_reason"
+            class="form-control"
+            placeholder="tuliskan cerita kamu ..."
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <label for="input-cv">
+          Upload CV kamu di manapun, lalu bagikan URL-nya di sini!
+        </label>
+        <div>
+          <input
+            type="text"
+            name="cv"
+            id="input-cv"
+            class="form-control"
+            placeholder="masukkan URL CV kamu ..."
+            required
+          />
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="card-body">
+        <input type="checkbox" id="input-aggree" class="form-check-input" name="aggree" required />
+        <label for="input-aggree">
+          Dengan mengirim data pendaftaran ini, kamu bersedia akan menyelesaikan
+          proses pendidikan sampai selesai.
+        </label>
+
+        <div class="mt-3 text-center">
+          <button class="btn btn-primary px-5 py-3">Daftar</button>
+        </div>
+      </div>
+
+    </form>
+
+  </div>
+</div>

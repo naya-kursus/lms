@@ -20,7 +20,7 @@ func (api index) Index(c *fiber.Ctx) error {
 	// return c.JSON(fiber.Map{
 	// 	"message": "Selamat datang di Belajar REST API dengan Go",
 	// })
-	return c.Render("index", fiber.Map{
+	return c.Render("registration", fiber.Map{
 		"name": c.Query("name"),
 	})
 }

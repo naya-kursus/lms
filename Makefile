@@ -13,4 +13,4 @@ build-compose:
 	&& docker build -t $$IMAGE_TAG .
 
 dev:
-	@gow run main.go
+	@gow -e=go -e=html -e=yaml run main.go
