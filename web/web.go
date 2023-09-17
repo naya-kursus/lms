@@ -5,7 +5,6 @@ import (
 	"log"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/template/html/v2"
 	"github.com/gowok/gowok"
 	"github.com/hadihammurabi/belajar-go-rest-api/driver"
 	"github.com/hadihammurabi/belajar-go-rest-api/web/middleware"
@@ -40,28 +39,16 @@ type Web struct {
 }
 
 func NewWeb() *Web {
-	app := gowok.NewHTTP(&driver.Get().Config.App.Rest)
-
-	views := html.New("./views", ".html")
-	views.AddFunc("public", func(p string) string {
-		return "/public/" + p
-	})
-	appWithView := fiber.New(fiber.Config{
-		Views:       views,
-		ViewsLayout: "layouts/empty",
-	})
-	appWithView.Static("public", "./public")
-	appWithView.Mount("", app)
-
+	app := gowok.NewHTTP(&driver.Get().Config.App.Web)
 	api := &Web{
-		HTTP:        appWithView,
+		HTTP:        app,
 		Middlewares: middleware.NewMiddleware(),
 	}
 	return api
 }
 
 func (d *Web) Run() {
-	restConf := driver.Get().Config.App.Rest
+	restConf := driver.Get().Config.App.Web
 	if !restConf.Enabled {
 		return
 	}

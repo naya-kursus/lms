@@ -6,11 +6,10 @@ toolchain go1.21.0
 
 require (
 	github.com/gofiber/fiber/v2 v2.49.1
-	github.com/gofiber/template/html/v2 v2.0.5
 	github.com/golang-jwt/jwt/v5 v5.0.0
 	github.com/golang-must/must v1.0.0
 	github.com/google/uuid v1.3.1
-	github.com/gowok/gowok v0.2.42
+	github.com/gowok/gowok v0.2.5
 	golang.org/x/crypto v0.8.0
 	gorm.io/gorm v1.25.4
 )
@@ -24,6 +23,7 @@ require (
 	github.com/go-playground/validator/v10 v10.11.1 // indirect
 	github.com/go-redis/redis/v8 v8.11.5 // indirect
 	github.com/gofiber/template v1.8.2 // indirect
+	github.com/gofiber/template/html/v2 v2.0.5 // indirect
 	github.com/gofiber/utils v1.1.0 // indirect
 	github.com/golang/snappy v0.0.1 // indirect
 	github.com/google/go-cmp v0.5.9 // indirect
